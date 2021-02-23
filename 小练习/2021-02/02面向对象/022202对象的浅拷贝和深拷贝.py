@@ -23,9 +23,9 @@ class screen:
         print("show")
         
 print("测试变量赋值")
-c1=cpu("Kylin")
+c1=cpu("Kirin 9000")
 c2=c1
-c3=cpu("Kylin")
+c3=cpu("Kirin 9000")
 print(c1.name,c1,c1.acc)
 print(c2.name,c2,c2.acc)
 print(c3.name,c3,c3.acc)
@@ -53,7 +53,7 @@ print(m3.cpu.acc)
 
 
 
-ss1="Kylin"
-ss2="Kylin"
+ss1="Kirin"
+ss2="Kirin"
 print(ss1==ss2)
 
