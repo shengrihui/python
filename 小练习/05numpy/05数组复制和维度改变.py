@@ -13,7 +13,7 @@ def np_copy():
     aa=a.reshape(4,6)
     print('aa:\n',aa)
     
-    sub_aa1=aa[:2,:2]
+    sub_aa1=aa[:2,:3]
     print('sub_aa1:\n',sub_aa1)
     sub_aa1[0,0]=666
     print('sub_aa1:\n',sub_aa1)
@@ -40,7 +40,7 @@ def change_nd():
     c=np.reshape(a,(3,4,2))
     print(c)
     
-    print('多为转一维数组')
+    print('多维转一维数组')
     d=np.reshape(c,24)
     print(d)
     d2=c.reshape(-1)
@@ -50,5 +50,5 @@ def change_nd():
 
     
     
-#np_copy()
-change_nd()
+np_copy()
+#change_nd()
