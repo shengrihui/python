@@ -10,12 +10,11 @@ from socket import *
 udp_socket=socket(AF_INET,SOCK_DGRAM)
 
 #绑定一个端口，本机 8989
-udp_socket.bind(('10.160.157.203',8989))
+udp_socket.bind(('10.160.149.141',8989))
 
-
-addr=('10.160.159.78',8080)
-data=input('请输入：111111
-           ')
+addr=('10.160.45.54',10500)
+#addr=('10.160.159.78',8080)
+data=input('请输入：111111')
 udp_socket.sendto(data.encode('gb2312'),addr)
 
 #接收信息

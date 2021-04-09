@@ -15,8 +15,8 @@ udp_socket=socket(AF_INET,SOCK_DGRAM)
 data=input("请输入：")
 
 #创建接收信息的地址，元组形式
-addr=('10.160.157.203',8080)
-
+#addr=('10.160.157.203',8080)
+addr=('10.160.45.54',10500)
 #调用sentto方法发送消息
 udp_socket.sendto(data.encode('gb2312'), addr)
 #网络助手默认的编码是gbk
