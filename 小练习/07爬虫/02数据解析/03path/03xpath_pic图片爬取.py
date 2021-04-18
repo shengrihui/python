@@ -64,3 +64,6 @@ for div in div_list[:-1]:
     with open(img_path,'wb') as fp:
         fp.write(img_data)
     print(img_name,'完成')
+    
+    
+    

@@ -23,6 +23,7 @@ td_list=page_soup.select('table  td')
 
 fp=open('02book_sanguo.txt','w',encoding='utf-8')
 
+
 for i in range(1,241,2):
     #print(type(td_list[i]))
     number=td_list[i].string.strip()
@@ -35,7 +36,12 @@ for i in range(1,241,2):
     detail_url='http://www.purepen.com/sgyy/'+a_href
     #print(detail_url)
     
-    detail_res=requests.get(url=detail_url,headers=header)
+    try:
+        detail_res=requests.get(url=detail_url,headers=header)
+    except:
+        print(number,'失败！')
+        fp.write(number+":"+title+"\n"+"\n")
+        continue
     detail_res.encoding='gb2312'
     detail_text=detail_res.text
     #print(detail_text)
@@ -45,6 +51,7 @@ for i in range(1,241,2):
     
     fp.write(number+":"+title+"\n"+passage+"\n")
     print(number,"完成！")
+
 
 fp.close()
 
