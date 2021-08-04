@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "E:/CSTS/PYTHON/小练习/2021-02/03异常处理/022303异常处理综合.py", line 20, in <module>
-    age=int(input("请输入一个年龄："))
-ValueError: invalid literal for int() with base 10: 'd'
