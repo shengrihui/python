@@ -30,10 +30,9 @@ def login(phonenumber='15958653143',password='Srhykt0018'):
 def each_ppt():
     ppts = bro.find_elements_by_class_name("container")
     for ppt in ppts:
-        if '未读' not in ppt.text:
-            continue
         ppt.click()
-        sleep(6)
+        if '未读'  in ppt.text:
+            sleep(6)
     bro.close()
     windows=bro.window_handles
     bro.switch_to.window(windows[-1])
@@ -79,26 +78,18 @@ def choose_subject(subject_list=[]):
             bro.back()
 
 
-    
-    #ppts=bro.find_elements_by_xpath('//*[@id="app"]/div[2]/div/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/div')
-    #flag_noRead=bro.find_elements_by_xpath('//*[@id="app"]/div[2]/div/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[*]/div/span[2]/text()')
-    #ppts=bro.find_elements_by_class_name('flag noRead')
-    #ppts=bro.find_elements_by_xpath('//*[@id="app"]/div[2]/div/div[2]/div[1]/div[1]/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[*]/div/span[2]')
-    # for i in ppts:
-    #     print(i.text)
-    # exit(0)
-
-
 
 # import os
 # os.system('shutdown /s /t 60')
 
 if __name__=='__main__':
     bro = webdriver.Chrome(executable_path='chromedriver.exe')
-    bro.get('https://changjiang.yuketang.cn/v2/web/index')
+    bro.get("https://changjiang.yuketang.cn/v2/web/index")
     sleep(1)
-    login('15518860964',"Zz302048") #drink
-    choose_subject(['数据结构'])
+    #login('15518860964',"Zz302048") #drink
+    login('15958653143','Srhykt0018')
+    #login('16639159358','Yuketang2003') #zhangxuanyuan
+    choose_subject([])
     #choose_subject()
 
     bro.quit()

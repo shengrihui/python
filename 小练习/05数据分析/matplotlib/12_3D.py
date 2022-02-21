@@ -22,6 +22,7 @@ figure=plt.figure()
 
 ax=Axes3D(figure)
 
+
 ax.plot_surface(X,Y,Z(X,Y))
 
 plt.show()
