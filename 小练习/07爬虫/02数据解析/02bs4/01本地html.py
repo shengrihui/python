@@ -7,11 +7,11 @@ Created on Sat Apr 10 15:42:31 2021
 
 from bs4 import BeautifulSoup
 
-fp=open('test.html','r',encoding='utf-8')
-soup=BeautifulSoup(fp,'lxml')
+fp = open('test.html', 'r', encoding='utf-8')
+soup = BeautifulSoup(fp, 'lxml')
 fp.close()
 
-#print(soup)
+# print(soup)
 
 '''
 soup.tagName返回第一个该标签的内容

@@ -44,7 +44,7 @@ headers = {
 
 url = 'http://www.kfc.com.cn/kfccda/ashx/GetStoreList.ashx?op=keyword'
 
-city=input("xxx:yu")
+city = input("xxx:yu")
 data = {
     'cname': '',
     'pid': '',

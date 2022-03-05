@@ -8,6 +8,8 @@ Created on Sun Apr 18 21:08:23 2021
 import base64
 import json
 import requests
+
+
 # 一、图片文字类型(默认 3 数英混合)：
 # 1 : 纯数字
 # 1001：纯数字2
@@ -38,11 +40,11 @@ import requests
 # 18：缺口识别
 # 五、拼图识别
 # 53：拼图识别
-def base64_api(uname, pwd, img,typeid):
+def base64_api(uname, pwd, img, typeid):
     with open(img, 'rb') as f:
         base64_data = base64.b64encode(f.read())
         b64 = base64_data.decode()
-    data = {"username": uname, "password": pwd,"typeid":typeid, "image": b64}
+    data = {"username": uname, "password": pwd, "typeid": typeid, "image": b64}
     result = json.loads(requests.post("http://api.ttshitu.com/predict", json=data).text)
     if result['success']:
         return result["data"]["result"]
@@ -53,5 +55,5 @@ def base64_api(uname, pwd, img,typeid):
 
 if __name__ == "__main__":
     img_path = "yanzhengma.jpg"
-    result = base64_api(uname='shengrihui', pwd='srhtj0018', img=img_path,typeid='1003')
+    result = base64_api(uname='shengrihui', pwd='srhtj0018', img=img_path, typeid='1003')
     print(result)

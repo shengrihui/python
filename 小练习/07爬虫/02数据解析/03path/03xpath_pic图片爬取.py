@@ -4,7 +4,7 @@ Created on Sat Apr 17 10:56:08 2021
 
 @author: shengrihui
 """
-#xpath爬取图片
+# xpath爬取图片
 
 '''
 图片box的div
@@ -30,40 +30,34 @@ import os
 if not os.path.exists('03pic图片爬取'):
     os.makedirs('03pic图片爬取')
 
+url = 'https://www.58pic.com/piccate/53-0-0.html?tid=1101759&utm_source=baidu&utm_medium=cpc&utm_campaign=%C9%E3%D3%B0%CD%BC&utm_content=%C9%E3%D3%B0%CD%BC%BA%CB%D0%C4&utm_term=%CD%BC%C6%AC&sdclkid=ALfG15fsxrDibLepAL26&bd_vid=12670257635697815590'
 
-url='https://www.58pic.com/piccate/53-0-0.html?tid=1101759&utm_source=baidu&utm_medium=cpc&utm_campaign=%C9%E3%D3%B0%CD%BC&utm_content=%C9%E3%D3%B0%CD%BC%BA%CB%D0%C4&utm_term=%CD%BC%C6%AC&sdclkid=ALfG15fsxrDibLepAL26&bd_vid=12670257635697815590'
+header = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
+}
 
-header={
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
-    }
+page_text = requests.get(url=url, headers=header).text
 
-page_text=requests.get(url=url,headers=header).text
+tree = etree.HTML(page_text)
 
-tree=etree.HTML(page_text)
-
-div_list=tree.xpath('//div[@class="image-box"]')
+div_list = tree.xpath('//div[@class="image-box"]')
 
 for div in div_list[:-1]:
-    img_data_original=div.xpath('./img[@class="lazy"]/@data-original')[0]
-    img_src=div.xpath('./img[@class="lazy"]/@src')[0]
-    #发现这两个东西是不一样的。
-    #print(img_data_original)
-    #print(img_src)
-    #print(img_data_original==img_src)
-    
-    img_name=div.xpath('./img/@title')[0]
-    
-    img_url=''.join(['https:',img_data_original.strip('!kuan320'),'!w1024_new_small'])
-    #print(img_url)
-    
-    img_data=requests.get(url=img_url,headers=header).content
-    
-    
-    
-    img_path='03pic图片爬取/'+img_name+'.jpg'
-    with open(img_path,'wb') as fp:
+    img_data_original = div.xpath('./img[@class="lazy"]/@data-original')[0]
+    img_src = div.xpath('./img[@class="lazy"]/@src')[0]
+    # 发现这两个东西是不一样的。
+    # print(img_data_original)
+    # print(img_src)
+    # print(img_data_original==img_src)
+
+    img_name = div.xpath('./img/@title')[0]
+
+    img_url = ''.join(['https:', img_data_original.strip('!kuan320'), '!w1024_new_small'])
+    # print(img_url)
+
+    img_data = requests.get(url=img_url, headers=header).content
+
+    img_path = '03pic图片爬取/' + img_name + '.jpg'
+    with open(img_path, 'wb') as fp:
         fp.write(img_data)
-    print(img_name,'完成')
-    
-    
-    
+    print(img_name, '完成')
